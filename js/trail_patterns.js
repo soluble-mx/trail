@@ -30,10 +30,6 @@ var winner = false;
 // Malla o no
 var renderGrid = false;
 
-// Referencias a Processings
-var processingPatron;
-var processingJuego;
-
 //////////////////////////////////
 //			PATRON SKECTH		//
 //			 PROCESSING			//
@@ -48,8 +44,6 @@ var resolutionYPattern = 0;
  * generar y dibujar el patrón objetivo del juego.
  */
 function patronSketch(processing) {
-
-	processingPatron = processing;
 
 	processing.setup = function() {
 		processing.size(404, 404);
@@ -100,8 +94,6 @@ var resolutionYGame = 0;
  */
 function juegoSketch(processing) {
 
-	processingJuego = processing;
-
 	/*
 	 * setup:
 	 *   Función setup de este sketch.
@@ -138,10 +130,10 @@ function juegoSketch(processing) {
 		
 		processing.fill(0,208,174); 
 		processing.noStroke();
+
 		drawModules(processing, tiles);
 
 		if (renderGrid) {
-
 			processing.noFill();
 			processing.stroke(0, 208, 174);
 
@@ -153,12 +145,43 @@ function juegoSketch(processing) {
 			}
 		}
 
-		if(!winner) {
-			// Actualizamos el temporizador
-			timer += timerProgress;
-			if(timer >= processing.width) {
-				// Ya perdio
+		if(!winner) {			
+			if(timer >= $("#timer_container").width()) {
+				winner = true;
+
+				// Mostramos la carita feliz
+				$("#loser_face").show();
+
+				setTimeout(function() {
+					// Reseteamos el grid
+					tiles = new Array();
+					for (var i = 0; i < resolutionXGame; i++) {
+						tiles[i] = new Array();
+
+						for (var j = 0; j < resolutionYGame; j++) {
+							tiles[i][j] = 0;
+						}
+					}
+
+					// Reseteamos el patron
+					resetPattern(resolutionXPattern, resolutionYPattern, pApplet_patron);
+
+					// Ocultamos la carita feliz
+					$("#loser_face").hide();
+
+					// Reseteo de timmer
+					timer = 0;
+
+					// Empieza de nuevo
+					winner = false;
+
+					// cambiamos la nota 
+					noteA = Math.round( Math.random() * 10 );
+				}, 2500);
 			} else {
+				// Actualizamos el temporizador
+				timer += timerProgress;
+
 				$("#timer_juego").css({
 					"width" : timer + "px"
 				});
@@ -167,10 +190,10 @@ function juegoSketch(processing) {
 	};
 
 	/*
-	 * mouseDragged:
+	 * mouseClicked:
 	 *   Evento de mouse arrastrado sobre este sketch.
 	 */
-	processing.mouseDragged = function() {
+	processing.mouseClicked = function() {
 		if(processing.mouseButton == processing.LEFT) {
 			setTile(processing.mouseX, processing.mouseY);
 		} else {
@@ -184,45 +207,24 @@ function juegoSketch(processing) {
 	 *  si es necesario.
 	 */
 	function setTile(mX, mY) {
+		if(!winner) {
+			var pos_x = processing.floor(mX / tileSize);
+			var pos_y = processing.floor(mY / tileSize);
 
-		var pos_x = processing.floor(mX / tileSize);
-		var pos_y = processing.floor(mY / tileSize);
+			// Solo tocamos cuando vamos a poner 1
+			if(tiles[pos_x][pos_y] == 0) {
+				var binaryResult = getBinaryNeighborhood(tiles, pos_x, pos_y);
+				var decimalResult = processing.unbinary(binaryResult);
 
-		// Solo tocamos cuando vamos a poner 1
-		if(tiles[pos_x][pos_y] == 0) {
-			var binaryResult = getBinaryNeighborhood(tiles, pos_x, pos_y);
-			var decimalResult = processing.unbinary(binaryResult);
+				composition();
+			}
 
-			composition();
-		}
+			tiles[pos_x][pos_y] = 1;
 
-		tiles[pos_x][pos_y] = 1;
-
-		if(matchGrids(tiles, target)) {
-			winner = true;
-
-			setTimeout(function() {
-
-				// Aumentamos la dificultad
-				difficulty++;
-
-				// Reseteamos el grid
-				tiles = new Array();
-				for (var i = 0; i < resolutionXGame; i++) {
-					tiles[i] = new Array();
-					for (var j = 0; j < resolutionYGame; j++) {
-						tiles[i][j] = 0;
-					}
-				}
-
-				// Reseteamos el patron
-				resetPattern(resolutionXPattern, resolutionYPattern, processingPatron);
-
-				winner = false;
-
-				// cambiamos la nota 
-				noteA = Math.round( Math.random() * 10 );
-			}, 2500);
+			// Verificamos el juego
+			verifyGame();
+		} else {
+			return;
 		}
 	}
 
@@ -232,38 +234,21 @@ function juegoSketch(processing) {
 	 *  si es necesario.
 	 */
 	function unsetTile(mX, mY) {
-		var pos_x = processing.floor(mX / tileSize);
-		var pos_y = processing.floor(mY / tileSize);
+		if(!winner) {
+			var pos_x = processing.floor(mX / tileSize);
+			var pos_y = processing.floor(mY / tileSize);
 
-		// Solo tocamos cuando vamos a quitar 1
-		if(tiles[pos_x][pos_y] == 1) {
-			composition();
-		}
+			// Solo tocamos cuando vamos a quitar 1
+			if(tiles[pos_x][pos_y] == 1) {
+				composition();
+			}
 
-		tiles[pos_x][pos_y] = 0;
+			tiles[pos_x][pos_y] = 0;
 
-		if(matchGrids(tiles, target)) {
-			winner = true;
-
-			setTimeout(function() {
-
-				// Aumentamos la dificultad
-				difficulty++;
-
-				// Reseteamos el grid
-				tiles = new Array();
-				for (var i = 0; i < resolutionXGame; i++) {
-					tiles[i] = new Array();
-					for (var j = 0; j < resolutionYGame; j++) {
-						tiles[i][j] = 0;
-					}
-				}
-
-				// Reseteamos el patron
-				resetPattern(resolutionXPattern, resolutionYPattern, processingPatron);
-
-				winner = false;
-			}, 2500);
+			// Verificamos el juego
+			verifyGame();
+		} else {
+			return;
 		}
 	}
 }
@@ -271,6 +256,51 @@ function juegoSketch(processing) {
 //////////////////////////////////
 //		FUNCIONES AUXILIARES	//
 //////////////////////////////////
+
+
+/*
+ * verifyGame:
+ *   Verifica el Juego
+ */
+function verifyGame() {
+	if(matchGrids(tiles, target)) {
+		winner = true;
+
+		// Mostramos la carita feliz
+		$("#winner_face").show();
+
+		setTimeout(function() {
+
+			// Aumentamos la dificultad
+			difficulty++;
+
+			// Reseteamos el grid
+			tiles = new Array();
+			for (var i = 0; i < resolutionXGame; i++) {
+				tiles[i] = new Array();
+
+				for (var j = 0; j < resolutionYGame; j++) {
+					tiles[i][j] = 0;
+				}
+			}
+
+			// Reseteamos el patron
+			resetPattern(resolutionXPattern, resolutionYPattern, pApplet_patron);
+
+			// Ocultamos la carita feliz
+			$("#winner_face").hide();
+
+			// Reseteo de timmer
+			timer = 0;
+
+			// Empieza de nuevo
+			winner = false;
+
+			// cambiamos la nota 
+			noteA = Math.round( Math.random() * 10 );
+		}, 2500);
+	}
+}
 
 /*
  * resetPattern:
@@ -291,11 +321,11 @@ function resetTileSize(newTileSize) {
 	tileSize = newTileSize;
 
 	// Seteamos las resoluciones
-	resolutionXPattern = processingPatron.floor(processingPatron.width  / tileSize);
-	resolutionYPattern = processingPatron.floor(processingPatron.height / tileSize);
+	resolutionXPattern = pApplet_patron.floor(pApplet_patron.width  / tileSize);
+	resolutionYPattern = pApplet_patron.floor(pApplet_patron.height / tileSize);
 
-	resolutionXGame = processingJuego.floor(processingJuego.height / tileSize);
-	resolutionYGame = processingJuego.floor(processingJuego.height / tileSize);
+	resolutionXGame = pApplet_juego.floor(pApplet_juego.height / tileSize);
+	resolutionYGame = pApplet_juego.floor(pApplet_juego.height / tileSize);
 
 	// Genera un patron
 	tiles = new Array();
@@ -324,7 +354,7 @@ function resetGame() {
 	}
 	
 	// Se crea el patron
-	target = generatePattern(resolutionXPattern, resolutionYPattern, processingPatron, difficulty);
+	target = generatePattern(resolutionXPattern, resolutionYPattern, pApplet_patron, difficulty);
 	targetLoaded = true;
 
 	timer = 0;

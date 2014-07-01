@@ -70,3 +70,18 @@ canvas {
 	top: 0;
 	left: 0;
 }
+
+.face {
+	width: 808px;
+	height: 402px;
+
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+.face img {
+	position: absolute;
+	top: 73px;
+	left: 290px;
+}

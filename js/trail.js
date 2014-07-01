@@ -5,8 +5,11 @@
 
 $(document).ready(function() {
 
-	// Ocultamos los canvas
+	// Ocultamos los canvas y el timer
 	$("canvas").hide();
+	$("#timer_container").hide();
+	$("#winner_face").hide();
+	$("#loser_face").hide();
 
 	/*****************************
 	 *      INICIA SONIDO         *
@@ -20,7 +23,9 @@ $(document).ready(function() {
 
 	// Iniciamos processing
 	pApplet_juego  = new Processing (  $("#juego_canvas")[0],  juegoSketch );
+	pApplet_juego.noLoop();
 	pApplet_patron = new Processing ( $("#patron_canvas")[0], patronSketch );
+	pApplet_patron.noLoop();
 
 	/*****************************
 	 * CONFIGURAMOS LOS EVENTOS  *
@@ -30,7 +35,12 @@ $(document).ready(function() {
 	$("#portada").click( function() {
 		// Ocultamos la portada y mostramos los canvas
 		$(this).fadeOut();
-		$("canvas").fadeIn();
+		$("canvas").fadeIn(400, function() {
+			pApplet_juego.loop();
+			pApplet_patron.loop();
+
+			$("#timer_container").show();
+		});
 	});
 
 	// Click sobre el toggle del grid
