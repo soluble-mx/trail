@@ -1,0 +1,72 @@
+body {
+	margin: 0px;
+}
+#portada {
+	position: absolute;
+	left: 0px;
+	top:0px;
+}
+
+canvas {
+	position: absolute;
+}
+
+#juego_canvas {
+	left: 0px;
+	top: 0px;
+}
+
+#patron_canvas {
+	left: 404px;
+	top: 0px;
+}
+
+#onOffGrid {
+	position: absolute;
+	left:10px;
+	top:424px;
+}
+
+#resetPattern {
+	position: absolute;
+	left:404px;
+	top:424px;
+}
+
+#grid4 {
+	position: absolute;
+	left: 100px;
+	top: 424px;
+}
+
+#grid8 {
+	position: absolute;
+	left: 200px;
+	top: 424px;
+}
+
+#grid16 {
+	position: absolute;
+	left: 300px;
+	top: 424px;
+}
+
+#timer_container {
+	width: 808px;
+	height: 7px;
+
+	background: #FFF;
+	position: absolute;
+	left: 0px;
+	top: 404px;
+}
+
+#timer_juego {
+	width: 0px;
+	height: 7px;
+
+	background: #000;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
