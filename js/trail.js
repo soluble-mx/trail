@@ -55,4 +55,9 @@ $(document).ready(function() {
  		resetTileSize(25);
  	});
 
+ 	$(".b_grid").click( function(){
+ 		$(".b_grid").attr("src",$(this).attr("out") )
+ 		$(this).attr("src",$(this).attr("click") )
+ 	})
+
 });

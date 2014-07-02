@@ -20,35 +20,32 @@ canvas {
 	left: 404px;
 	top: 0px;
 }
+.boton {
+	position: absolute;
+	top: 412px;
+}
 
 #onOffGrid {
-	position: absolute;
-	left:10px;
-	top:424px;
+	left:0px;
 }
 
 #resetPattern {
-	position: absolute;
-	left:404px;
-	top:424px;
+	left:447px;
 }
 
 #grid4 {
-	position: absolute;
-	left: 100px;
-	top: 424px;
+	left: 113px;
 }
 
 #grid8 {
-	position: absolute;
-	left: 200px;
-	top: 424px;
+	left: 207px;
 }
 
 #grid16 {
-	position: absolute;
-	left: 300px;
-	top: 424px;
+	left: 310px;
+}
+#diseno_procedural {
+	left: 650px;
 }
 
 #timer_container {
