@@ -1,7 +1,7 @@
 body {
 	margin: 0px;
 }
-#portada {
+#portada, #diseno_procedural {
 	position: absolute;
 	left: 0px;
 	top:0px;
@@ -44,8 +44,14 @@ canvas {
 #grid16 {
 	left: 310px;
 }
-#diseno_procedural {
+#procedural_toggle {
 	left: 650px;
+}
+
+#procedural_toggle {
+	position: absolute;
+	left: 650px;
+	top: 424px;
 }
 
 #timer_container {
@@ -66,4 +72,19 @@ canvas {
 	position: absolute;
 	top: 0;
 	left: 0;
+}
+
+.face {
+	width: 808px;
+	height: 402px;
+
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+.face img {
+	position: absolute;
+	top: 73px;
+	left: 290px;
 }
