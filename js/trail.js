@@ -50,6 +50,11 @@ $(document).ready(function() {
 	// Click sobre el toggle del grid
 	$("#onOffGrid").click( function() {
 		renderGrid = !renderGrid;
+		if ( renderGrid ) {
+			$(this).attr("src", $(this).attr("click") );
+		} else {
+			$(this).attr("src", $(this).attr("out"));
+		}
  	});
 
  	// Click sobre el boton de resetear patrón
@@ -60,6 +65,7 @@ $(document).ready(function() {
 	var procedural = false;
 	$("#procedural_toggle").click( function() {
 		procedural = !procedural;
+		var thisObj = this;
 		if(procedural) {
 			$("canvas").hide();
 			$("#diseno_procedural").show();
@@ -67,6 +73,7 @@ $(document).ready(function() {
 			pApplet_juego.noLoop();
 			pApplet_patron.noLoop();
 			$("#timer_container").hide();
+			$(thisObj).attr("src", $(thisObj).attr("click") );
 		} else {
 			$("canvas").show();
 			$("#diseno_procedural").hide();
@@ -74,6 +81,7 @@ $(document).ready(function() {
 			pApplet_juego.loop();
 			pApplet_patron.loop();
 			$("#timer_container").show();
+			$(thisObj).attr("src", $(thisObj).attr("out"));
 		}
  	});	
 
@@ -82,11 +90,11 @@ $(document).ready(function() {
  	});
 
  	$("#grid8").click( function() {
- 		resetTileSize(51);
+ 		resetTileSize(44.8);
  	});
 
  	$("#grid16").click( function() {
- 		resetTileSize(25);
+ 		resetTileSize(23.7);
  	});
 
  	$(".b_grid").click( function(){

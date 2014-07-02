@@ -7,7 +7,7 @@ var pApplet_patron;
 var module = new Array(16);
 var modulesLoaded = false;
 
-var tileSize = 101;
+var tileSize = 101; // 4:101 8:51 16:25
 var tiles;
 
 // Resolucion del patron
@@ -18,7 +18,7 @@ var target;
 var targetLoaded = false;
 
 // Dificultad
-var difficulty = 1;
+var difficulty = 2;
 
 // Timer
 var timerProgress = 1;
@@ -30,6 +30,8 @@ var winner = false;
 // Malla o no
 var renderGrid = false;
 
+// bandera conducta del usuario
+var flagMouseUser = "NONE"
 //////////////////////////////////
 //			PATRON SKECTH		//
 //			 PROCESSING			//
@@ -47,6 +49,8 @@ function patronSketch(processing) {
 
 	processing.setup = function() {
 		processing.size(404, 404);
+		processing.background(255); 
+		//processing.smooth();
 
 		resolutionXPattern = processing.floor(processing.width  / tileSize);
 		resolutionYPattern = processing.floor(processing.height / tileSize);
@@ -65,6 +69,7 @@ function patronSketch(processing) {
 
 		if (renderGrid) {
 			processing.noFill();
+			processing.strokeWeight(0.5);
 			processing.stroke(232, 34, 57);
 
 			processing.rectMode(processing.CORNER);
@@ -100,6 +105,8 @@ function juegoSketch(processing) {
 	 */
 	processing.setup = function() {
 		processing.size(404, 404);
+		processing.background(255); 
+		//processing.smooth();
 
 		resolutionXGame = processing.floor(processing.height / tileSize);
 		resolutionYGame = processing.floor(processing.height / tileSize);
@@ -136,7 +143,7 @@ function juegoSketch(processing) {
 		if (renderGrid) {
 			processing.noFill();
 			processing.stroke(0, 208, 174);
-
+			processing.strokeWeight(0.5);
 			processing.rectMode(processing.CORNER);
 			for (var i = 0; i < resolutionXGame; i++) {
 				for (var j = 0; j < resolutionYGame; j++) {
@@ -145,11 +152,19 @@ function juegoSketch(processing) {
 			}
 		}
 
+		if( flagMouseUser == "LEFT") {
+			setTile(processing.mouseX, processing.mouseY);
+		} else if (flagMouseUser == "RIGHT" ) {
+			unsetTile(processing.mouseX, processing.mouseY);
+		}
+
 		if(!winner) {			
 			if(timer >= $("#timer_container").width()) {
 				winner = true;
 
 				// Mostramos la carita feliz
+				flagMouseUser = "NONE";
+
 				$("#loser_face").show();
 
 				setTimeout(function() {
@@ -190,15 +205,24 @@ function juegoSketch(processing) {
 	};
 
 	/*
-	 * mouseDragged:
-	 *   Evento de mouse arrastrado sobre este sketch.
+	 * mousePressed vs mouseReleased:
+	 *   Eventos de mouse sobre este sketch.
+	 *	 bandera global flagMouseUser
 	 */
-	processing.mouseDragged = function() {
+
+
+	processing.mousePressed = function() {
 		if(processing.mouseButton == processing.LEFT) {
-			setTile(processing.mouseX, processing.mouseY);
+			//setTile(processing.mouseX, processing.mouseY);
+			flagMouseUser = "LEFT"
 		} else {
-			unsetTile(processing.mouseX, processing.mouseY);
+			flagMouseUser = "RIGHT"
+			//unsetTile(processing.mouseX, processing.mouseY);
 		}
+	}
+
+	processing.mouseReleased = function() {
+		flagMouseUser = "NONE"
 	}
 
 	/*
@@ -213,8 +237,8 @@ function juegoSketch(processing) {
 
 			// Solo tocamos cuando vamos a poner 1
 			if(tiles[pos_x][pos_y] == 0) {
-				var binaryResult = getBinaryNeighborhood(tiles, pos_x, pos_y);
-				var decimalResult = processing.unbinary(binaryResult);
+				//var binaryResult = getBinaryNeighborhood(tiles, pos_x, pos_y);
+				//var decimalResult = processing.unbinary(binaryResult);
 
 				composition();
 			}
@@ -264,6 +288,9 @@ function juegoSketch(processing) {
  */
 function verifyGame() {
 	if(matchGrids(tiles, target)) {
+		
+		flagMouseUser = "NONE";
+
 		winner = true;
 
 		// Mostramos la carita feliz

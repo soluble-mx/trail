@@ -1,6 +1,13 @@
 body {
 	margin: 0px;
 }
+
+#contenido {
+	width: 808px;
+	height: 448px;
+	background-color:#ffffff; 
+}
+
 #portada, #diseno_procedural {
 	position: absolute;
 	left: 0px;
