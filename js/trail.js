@@ -90,8 +90,14 @@ $(document).ready(function() {
  	});
 
  	$(".b_grid").click( function(){
- 		$(".b_grid").attr("src", $(this).attr("out") )
- 		$(this).attr("src", $(this).attr("click") )
+ 		var that = this;
+ 		$(".b_grid").each(function() {
+ 			if(that == this) {
+ 				$(this).attr("src", $(this).attr("click") );
+ 			} else {
+				$(this).attr("src", $(this).attr("out"));
+ 			}
+ 		});
  	})
 
 });

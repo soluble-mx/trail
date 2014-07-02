@@ -48,17 +48,11 @@ canvas {
 	left: 650px;
 }
 
-#procedural_toggle {
-	position: absolute;
-	left: 650px;
-	top: 424px;
-}
-
 #timer_container {
 	width: 808px;
 	height: 7px;
 
-	background: #FFF;
+	background: #90D0AE;
 	position: absolute;
 	left: 0px;
 	top: 404px;
@@ -68,7 +62,7 @@ canvas {
 	width: 0px;
 	height: 7px;
 
-	background: #000;
+	background: #E82239;
 	position: absolute;
 	top: 0;
 	left: 0;
