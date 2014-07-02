@@ -101,16 +101,22 @@ canvas {
 	width: 320px;
 	height: 155px;
 	left: 335px;
-	top: 107px;
-	font-size: 18px;
+	top: 80px;
+	font-family: 'Roboto', sans-serif;
+	font-weight: 500;
+	font-size: 15px;
+	color: #E82239;
 }
 #mensaje_incomp span{
+	font-family: 'Roboto', sans-serif;
+	font-weight: 300;
 	font-size: 48px;
+	color: #E82239;
 }
 #nav_icons {
 	position: absolute;
 	top: 275px;
-	left: 335px;
+	left: 325px;
 	width: 350px;
 	height: 95px;
 }
