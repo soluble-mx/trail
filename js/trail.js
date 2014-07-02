@@ -12,6 +12,8 @@ $(document).ready(function() {
 	$("#diseno_procedural").hide();
 	$("#loser_face").hide();
 
+	$(".controls").hide();
+
 	/*****************************
 	 *      INICIA SONIDO         *
 	 *****************************/
@@ -36,6 +38,7 @@ $(document).ready(function() {
 	$("#portada").click( function() {
 		// Ocultamos la portada y mostramos los canvas
 		$(this).hide();
+		$(".controls").show();
 		$("canvas").fadeIn(400, function() {
 			pApplet_juego.loop();
 			pApplet_patron.loop();

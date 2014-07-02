@@ -190,10 +190,10 @@ function juegoSketch(processing) {
 	};
 
 	/*
-	 * mouseClicked:
+	 * mouseDragged:
 	 *   Evento de mouse arrastrado sobre este sketch.
 	 */
-	processing.mouseClicked = function() {
+	processing.mouseDragged = function() {
 		if(processing.mouseButton == processing.LEFT) {
 			setTile(processing.mouseX, processing.mouseY);
 		} else {
