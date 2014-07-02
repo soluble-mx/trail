@@ -89,3 +89,28 @@ canvas {
 	top: 73px;
 	left: 290px;
 }
+
+#nav_incompatible {
+	position: absolute;
+	background-image: url(../img/back2.png);
+	width: 810px;
+	height: 412px;
+}
+#mensaje_incomp {
+	position: absolute;
+	width: 320px;
+	height: 155px;
+	left: 335px;
+	top: 107px;
+	font-size: 18px;
+}
+#mensaje_incomp span{
+	font-size: 48px;
+}
+#nav_icons {
+	position: absolute;
+	top: 275px;
+	left: 335px;
+	width: 350px;
+	height: 95px;
+}
