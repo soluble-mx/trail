@@ -9,6 +9,7 @@ $(document).ready(function() {
 	$("canvas").hide();
 	$("#timer_container").hide();
 	$("#winner_face").hide();
+	$("#diseno_procedural").hide();
 	$("#loser_face").hide();
 
 	/*****************************
@@ -34,7 +35,7 @@ $(document).ready(function() {
 	// Click sobre la portada
 	$("#portada").click( function() {
 		// Ocultamos la portada y mostramos los canvas
-		$(this).fadeOut();
+		$(this).hide();
 		$("canvas").fadeIn(400, function() {
 			pApplet_juego.loop();
 			pApplet_patron.loop();
@@ -52,6 +53,26 @@ $(document).ready(function() {
 	$("#resetPattern").click( function() {
 		resetGame();
 	});
+
+	var procedural = false;
+	$("#procedural_toggle").click( function() {
+		procedural = !procedural;
+		if(procedural) {
+			$("canvas").hide();
+			$("#diseno_procedural").show();
+
+			pApplet_juego.noLoop();
+			pApplet_patron.noLoop();
+			$("#timer_container").hide();
+		} else {
+			$("canvas").show();
+			$("#diseno_procedural").hide();
+			
+			pApplet_juego.loop();
+			pApplet_patron.loop();
+			$("#timer_container").show();
+		}
+ 	});	
 
 	$("#grid4").click( function() {
 		resetTileSize(101);

@@ -1,7 +1,7 @@
 body {
 	margin: 0px;
 }
-#portada {
+#portada, #diseno_procedural {
 	position: absolute;
 	left: 0px;
 	top:0px;
@@ -48,6 +48,12 @@ canvas {
 #grid16 {
 	position: absolute;
 	left: 300px;
+	top: 424px;
+}
+
+#procedural_toggle {
+	position: absolute;
+	left: 650px;
 	top: 424px;
 }
 
