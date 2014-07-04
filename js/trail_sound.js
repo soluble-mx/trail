@@ -43,5 +43,7 @@ function composition() {
 		}
 	}
 
-	timbre.soundfont.play(matrizOctavesNotes[octava][noteA], false);
+	if(BrowserDetect.browser != "Safari") {
+		timbre.soundfont.play(matrizOctavesNotes[octava][noteA], false);
+	}
 }
