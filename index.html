@@ -25,26 +25,33 @@
 
 		<!-- STYLESHEETS & FONTS-->
 		<link rel="stylesheet" type="text/css" href="css/trail.css">
-		<link href='http://fonts.googleapis.com/css?family=Roboto:400,300,500,700&subset=latin,latin-ext' rel='stylesheet' type='text/css'>	
+		<link href='http://fonts.googleapis.com/css?family=Roboto:400,300,500,700&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+		<link href='http://fonts.googleapis.com/css?family=Roboto+Condensed:400,300,700&subset=latin,latin-ext' rel='stylesheet' type='text/css'>	
 	</head>
 
 	<body>
 		<div id="contenido" >
 
-			<div id="nav_incompatible" >
-				<img src="img/back2.png">
-				<div id="mensaje_incomp"><span>¡Ups!</span><br><br>Tu versión de navegador no es compatible con esta aplicación.<br><br>Exploradores recomendados:</div>
+			<div id="portada" class="pantallas" >
+				<img src="img/back1.png">
+				<img id="trail_logo" src="img/trail_logo.png" alt="trail diseño medios digitales">
+				<div id="titulo"><span>Diseño procedural:</span><br>Módulos y retículas</div>
+				<div id="comenzar"><img src="img/inicio_icono.png"><span>Clic para comenzar</span></div>
+				<img id="centro_logo" src="img/logo_centro.png">
+				<div id="mensaje"> 
+					<p><span>Instrucciones:</span></p>
+					<li>Dibuja en el cuadro rojo (izquierda) la figura mostrada en el cuadro verde (derecha).</p>
+					<li>Para trazar usa el botón izquierdo del mouse</li> 
+					<li>Para borrar usa el botón derecho del mouse.</li><br>
+					<p>Esta aplicación utiliza nuevos estándares de HTML5 como WebAudioApi y Canvas para gráficos interactivos.</p>
+					<p>Fue probada en los siguientes navegadores:</p>
+				</div>
 				<div id="nav_icons">
-					<img src="img/chrome_icon-01.png">
 					<img src="img/firefox_icon-01.png">
-					<img src="img/explorer_icon-01.png">
-					<img src="img/safari_icon-01.png">
+					<img src="img/chrome_icon-01.png">
 				</div>
 			</div>
 
-
-			<img id="portada" src="img/portada.png" alt="trail diseño medios digitales"/>
-			
 			<canvas id="juego_canvas" style="background-color:#E82239" ></canvas>
 			<canvas id="patron_canvas" style="background-color:#90D0AE" ></canvas>
 
@@ -60,8 +67,7 @@
 				<div id="timer_juego"></div>
 			</div>
 
-			<div id="diseno_procedural">
-				<img src="img/algortimo.png">
+			<div id="diseno_procedural" class="pantallas">
 			</div>
 
 			<img id="onOffGrid" class="boton" src="img/b_ret_1.png" click="img/b_ret_2.png" out="img/b_ret_1.png" />

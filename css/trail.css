@@ -7,12 +7,84 @@ body {
 	height: 448px;
 	background-color:#ffffff; 
 }
-
-#portada, #diseno_procedural {
+.pantallas {
 	position: absolute;
-	left: 0px;
-	top:0px;
+	width: 810px;
+	height: 412px;
 }
+
+
+#trail_logo {
+	position: absolute;
+	top: 50px;
+	left: 35px;
+}
+#titulo {
+	position: absolute;
+	top: 190px;
+	left:35px;
+	font-family: 'Roboto Condensed', sans-serif;
+	font-weight: 700;
+	font-size: 27px;
+	color: #90d0ae;
+	line-height: 30px
+}
+	#titulo span{
+		font-weight: 400;
+	}
+#comenzar {
+	position: absolute;
+	top: 283px;
+	left: 35px;
+	font-family: 'Roboto', sans-serif;
+	font-weight: 400;
+	font-size: 17px;
+	color: #90d0ae;
+}
+	#comenzar span {
+		position: absolute;
+		top: 5px;
+		left: 25px;
+		width: 150px;
+	}
+#centro_logo {
+	position: absolute;
+	bottom: 28px;
+	left: 30px;
+}
+#mensaje {
+	position: absolute;
+	width: 295px;
+	height: 155px;
+	left: 460px;
+	top: 100px;
+	font-family: 'Roboto', sans-serif;
+	font-weight: 400;
+	font-size: 13px;
+	color: #E82239;
+	line-height: 15px;
+}
+	#mensaje span{
+		font-family: 'Roboto', sans-serif;
+		font-weight: 300;
+		font-size: 21px;
+		color: #E82239;
+	}
+	#mensaje p, li {
+		margin-bottom: 10px;
+		margin-top: 3px;
+		vertical-align: top;
+		list-style-image:url('../img/punto_lista.png');
+		list-style-position:outside;
+	}
+#nav_icons {
+	position: absolute;
+	top: 324px;
+	left: 450px;
+	width: 350px;
+	height: 95px;
+}
+
 
 canvas {
 	position: absolute;
@@ -90,33 +162,3 @@ canvas {
 	left: 290px;
 }
 
-#nav_incompatible {
-	position: absolute;
-	background-image: url(../img/back2.png);
-	width: 810px;
-	height: 412px;
-}
-#mensaje_incomp {
-	position: absolute;
-	width: 320px;
-	height: 155px;
-	left: 335px;
-	top: 80px;
-	font-family: 'Roboto', sans-serif;
-	font-weight: 500;
-	font-size: 15px;
-	color: #E82239;
-}
-#mensaje_incomp span{
-	font-family: 'Roboto', sans-serif;
-	font-weight: 300;
-	font-size: 48px;
-	color: #E82239;
-}
-#nav_icons {
-	position: absolute;
-	top: 275px;
-	left: 325px;
-	width: 350px;
-	height: 95px;
-}
