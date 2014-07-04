@@ -84,8 +84,24 @@ body {
 	width: 350px;
 	height: 95px;
 }
-
-
+#logica_juego {
+	position: absolute;
+	top: 239px;
+	left: 25px;
+	width: 765px;
+	height: 80px;
+	font-family: 'Roboto', sans-serif;
+	font-weight: 400;
+	font-size: 13px;
+	color: #E82239;
+}
+	#logica_juego span {
+		font-size: 18px;
+	}
+	#logica_juego p {
+		margin-bottom: 5px;
+			margin-top: 3px;
+	}
 canvas {
 	position: absolute;
 }
