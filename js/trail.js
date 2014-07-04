@@ -4,6 +4,8 @@
 //////////////////////////////////////
 
 $(document).ready(function() {
+	BrowserDetect.init();
+	console.log(BrowserDetect.browser);
 
 	// Ocultamos los canvas y el timer
 	$("canvas").hide();
