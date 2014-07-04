@@ -7,7 +7,7 @@ $(document).ready(function() {
 
 	// Ocultamos los canvas y el timer
 	$("canvas").hide();
-	$("#nav_incompatible").hide();
+	$("#ze").hide();
 	$("#timer_container").hide();
 	$("#winner_face").hide();
 	$("#diseno_procedural").hide();

@@ -1,0 +1,89 @@
+<html>
+	<head>
+		<title>Trail</title>
+		<meta charset="utf-8">
+
+		<!-- JAVASCRIPT -->
+		<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+
+		<!-- SOUND -->
+		<script type="text/javascript" src="js/subcollider-min.js"></script>
+		<script type="text/javascript" src="js/timbre.js"></script>
+		<script type="text/javascript" src="js/common.js"></script>
+		<script type="text/javascript" src="js/audio-jsonp.js"></script>
+		<script type="text/javascript" src="js/jsmad.js"></script>
+		<script type="text/javascript" src="js/mp3_decode.js"></script>
+		<script type="text/javascript" src="js/soundfont.js"></script>
+		<script type="text/javascript" src="js/trail_sound.js"></script>
+
+		<!-- LOGIC AND RENDER -->
+		<script type="text/javascript" src="js/processing.min.js"></script>
+		<script type="text/javascript" src="js/trail_patterns.js"></script>
+
+		<!-- MAIN -->
+		<script type="text/javascript" src="js/trail.js"></script>
+
+		<!-- STYLESHEETS & FONTS-->
+		<link rel="stylesheet" type="text/css" href="css/trail.css">
+		<link href='http://fonts.googleapis.com/css?family=Roboto:400,300,500,700&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+		<link href='http://fonts.googleapis.com/css?family=Roboto+Condensed:400,300,700&subset=latin,latin-ext' rel='stylesheet' type='text/css'>	
+	</head>
+
+	<body>
+		<div id="contenido" >
+
+			<div id="portada" class="pantallas" >
+				<img src="img/back1.png" />
+				<img id="trail_logo" src="img/trail_logo.png" alt="trail diseño medios digitales" />
+				<div id="titulo">
+					<span>Diseño procedural:</span>
+					<br>
+					Módulos y retículas
+				</div>
+				<div id="comenzar">
+					<img src="img/inicio_icono.png" />
+					<span>Clic para comenzar</span>
+				</div>
+				<img id="centro_logo" src="img/logo_centro.png"/>
+				<div id="mensaje"> 
+					<p><span>Instrucciones:</span></p>
+					<li>Dibuja en el cuadro rojo (izquierda) la figura mostrada en el cuadro verde (derecha).</p></li>
+					<li>Para trazar usa el botón izquierdo del mouse</li> 
+					<li>Para borrar usa el botón derecho del mouse.</li>
+					<br>
+					<p>Esta aplicación utiliza nuevos estándares de HTML5 como WebAudioApi y Canvas para gráficos interactivos.</p>
+					<p>Fue probada en los siguientes navegadores:</p>
+				</div>
+				<div id="nav_icons">
+					<img src="img/firefox_icon-1.png" />
+					<img src="img/chrome_icon-1.png" />
+				</div>
+			</div>
+
+			<canvas id="juego_canvas" style="background-color:#E82239" ></canvas>
+			<canvas id="patron_canvas" style="background-color:#90D0AE" ></canvas>
+
+			<div id="winner_face" class="face">
+				<img src="img/faces/happy_2.png" />
+			</div>
+
+			<div id="loser_face" class="face">
+				<img src="img/faces/sad_1.png" />
+			</div>
+
+			<div id="timer_container">
+				<div id="timer_juego"></div>
+			</div>
+
+			<div id="diseno_procedural" class="pantallas"></div>
+
+			<img id="onOffGrid" class="boton" src="img/b_ret_1.png" click="img/b_ret_2.png" out="img/b_ret_1.png" />
+			<img id="resetPattern" class="boton" src="img/b_cambiar_1.png" click="img/b_cambiar_2.png" out="img/b_cambiar_1.png" />
+			<img id="grid4" class="boton b_grid" src="img/b_4_2.png" click="img/b_4_2.png" out="img/b_4_1.png" />
+			<img id="grid8" class="boton b_grid" src="img/b_8_1.png" click="img/b_8_2.png" out="img/b_8_1.png" />
+			<img id="grid16" class="boton b_grid" src="img/b_16_1.png" click="img/b_16_2.png" out="img/b_16_1.png" />
+			<img id="procedural_toggle" class="boton" src="img/b_diseno_1.png" click="img/b_diseno_2.png" out="img/b_diseno_1.png" />
+		</div>
+	</body>
+
+</html>
