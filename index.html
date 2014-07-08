@@ -5,17 +5,26 @@
 		<meta charset="utf-8">
 
 		<script type="text/javascript" src="js/BrowserDetect.js"></script>
+		<script type="text/javascript" src="js/jquery-2.1.0.js"></script>
 		<script type="text/javascript">
-		
-			// Iniciamos la deteccion de browsers
-			BrowserDetect.init();
 
-			var host = location.protocol + "//" + location.hostname + location.pathname;
-			if(BrowserDetect.browser == "Explorer" || (BrowserDetect.browser == "Mozilla" && BrowserDetect.version == 11)) {
-				window.location = host + "disclaimer.html";
-			} else {
-				window.location = host + "game.html";
-			}
+			// Escribimos una visita en la base de datos
+			$.ajax({
+				type: "GET",
+				url: "http://laborar.co/register_visit_trail.php",
+				dataType: "json",
+				success: function( reponse ) {
+					// Iniciamos la deteccion de browsers
+					BrowserDetect.init();
+
+					var host = location.protocol + "//" + location.hostname + location.pathname;
+					if(BrowserDetect.browser == "Explorer" || (BrowserDetect.browser == "Mozilla" && BrowserDetect.version == 11)) {
+						window.location = host + "disclaimer.html";
+					} else {
+						window.location = host + "game.html";
+					}
+				}
+			});
 
 		</script>
 	</head>
